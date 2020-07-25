@@ -1,3 +1,8 @@
+<!--
+  ~ ParkingSV - Interplanetary Parking System
+  ~ Copyright (c) 2020. Mikhail Lazarev
+  -->
+
 <resources>
     <string name="app_name">mobile</string>
 </resources>
