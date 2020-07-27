@@ -15,8 +15,8 @@ import {TransactionStack} from './Transactions/TransactionStack';
 const Tab = createBottomTabNavigator();
 
 const tabIcons: Record<string, string> = {
-  Parking: 'ios-person',
-  Transactions: 'ios-person',
+  Parking: 'ios-car-outline',
+  Transactions: 'ios-card-outline',
   Settings: 'ios-settings',
 };
 

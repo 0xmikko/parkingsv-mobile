@@ -6,26 +6,36 @@
 import React, {useEffect, useState} from 'react';
 import actions from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, RouteProp, useRoute} from '@react-navigation/native';
 import {operationSelector} from 'redux-data-connect';
 import {profileSelector} from '../../store/profile';
-import {OnParkingView} from '../../containers/Parking/OnParkingView';
-import {ReadyView} from '../../containers/Parking/ReadyView';
+import {ParkingTermsView} from '../../containers/Parking/ParkingTermsView';
+import {ParkingStackParamList} from './ParkingStack';
 
-export const ParkingMainScreen: React.FC = () => {
+type ParkingTermsScreenRouteProp = RouteProp<
+  ParkingStackParamList,
+  'ParkingTermsScreen'
+>;
+
+export const ParkingTermsScreen: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [hashGet, setGetHash] = useState('0');
   const [hashAdd, setAddHash] = useState('0');
 
-  const getProfile = () => {
-    const newHash = Date.now().toString();
-    dispatch(actions.profile.getProfile(newHash));
-    setGetHash(newHash);
+  const route = useRoute<ParkingTermsScreenRouteProp>();
+  const {node} = route.params;
+
+  console.log(node);
+
+  const getTerms = () => {
+    const newGetHash = Date.now().toString();
+    dispatch(actions.parking.getTerms(node));
+    setGetHash(newGetHash);
   };
 
   useEffect(() => {
-    getProfile();
+    getTerms();
   }, []);
 
   const data = useSelector(profileSelector);
@@ -53,9 +63,5 @@ export const ParkingMainScreen: React.FC = () => {
     navigation.navigate('QRScanScreen');
   };
 
-  return data.isParking ? (
-    <OnParkingView started={data.startedAt} />
-  ) : (
-    <ReadyView amount={data.amount} onQRCodeScan={onScanQRCode} />
-  );
+  return <ParkingTermsView amount={} onQRCodeScan={} />;
 };

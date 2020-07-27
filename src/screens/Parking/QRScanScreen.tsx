@@ -7,19 +7,14 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Text} from 'react-native-elements';
 import QRCodeScanner, {Event} from 'react-native-qrcode-scanner';
-import {useDispatch} from 'react-redux';
-import actions from '../../store/actions';
 import {useNavigation} from '@react-navigation/native';
 
 export const QRScanScreen: React.FC = () => {
-  const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const onSuccess = (e: Event) => {
-    const qrcode = e.data as string;
-    const newHash = Date.now().toString();
-    dispatch(actions.auth.authWeb(qrcode, newHash));
-    navigation.navigate('SettingsScreen');
+  const onSuccess = (e: Event | null) => {
+    // const qrcode = e.data as string;
+    navigation.navigate('ParkingTermsScreen');
   };
   return (
     // <Text>Hello!</Text>
@@ -32,7 +27,7 @@ export const QRScanScreen: React.FC = () => {
       }
       bottomContent={
         <View style={styles.container}>
-          <Button title="Scan QR-Code" />
+          <Button title="Scan QR-Code" onPress={() => onSuccess(null)} />
         </View>
       }
     />

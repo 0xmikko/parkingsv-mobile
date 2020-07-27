@@ -8,7 +8,7 @@ export interface OnParkingScreenProps {
   started: number;
 }
 
-export function OnParkingScreen({
+export function OnParkingView({
   started,
 }: OnParkingScreenProps): React.ReactElement {
   console.log(started);

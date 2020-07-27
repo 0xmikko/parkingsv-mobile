@@ -8,7 +8,12 @@ import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import {ParkingMainScreen} from './ParkingMainScreen';
 import {QRScanScreen} from './QRScanScreen';
 import {largeTitleStyles} from '../../../styles';
+import { ParkingTermsScreen } from "./ParkingTermsScreen";
 const Stack = createNativeStackNavigator();
+
+export type ParkingStackParamList = {
+  ParkingTermsScreen: {node: string};
+};
 
 export const ParkingStack: React.FC = () => {
   return (
@@ -22,7 +27,15 @@ export const ParkingStack: React.FC = () => {
         }}
       />
       <Stack.Screen
-        name="QRScreen"
+        name="ParkingTermsScreen"
+        component={ParkingTermsScreen}
+        options={{
+          title: 'Terms',
+          ...largeTitleStyles,
+        }}
+      />
+      <Stack.Screen
+        name="QRScanScreen"
         component={QRScanScreen}
         options={{
           title: 'Scan QR code',
