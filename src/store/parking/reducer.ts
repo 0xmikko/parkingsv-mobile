@@ -29,18 +29,18 @@ export default function createReducer(
         node: action.payload.node,
       };
 
-    case 'PARKING_REQUEST':
+    case 'PARKING_INFO_REQUEST':
       return {
         ...initialState,
         node: state.node,
       };
 
-    case 'PARKING_SUCCESS':
+    case 'PARKING_INFO_SUCCESS':
       return {
         ...action.payload,
         node: state.node,
       };
-    case 'PARKING_FAILURE':
+    case 'PARKING_INFO_FAIlURE':
       return {
         ...initialState,
       };

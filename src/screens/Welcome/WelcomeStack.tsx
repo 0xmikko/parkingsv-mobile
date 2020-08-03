@@ -6,8 +6,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SplashScreen} from './SplashScreen';
-import {EnterPhoneScreen} from '../Auth/EnterPhoneScreen';
-import {EnterCodeScreen} from '../Auth/EnterCodeScreen';
+import {EditNameAndPlateScreen} from '../Profile/EditNameAndPlateScreen';
+import {EnterMnemonicScreen} from '../Profile/EnterMnemonicScreen';
 
 const Stack = createStackNavigator();
 
@@ -27,12 +27,12 @@ export const WelcomeStack: React.FC = () => {
       />
       <Stack.Screen
         name="PhoneScreen"
-        component={EnterPhoneScreen}
+        component={EnterMnemonicScreen}
         options={{
           headerShown: false,
         }}
       />
-      <Stack.Screen name="EnterCodeScreen" component={EnterCodeScreen} />
+      <Stack.Screen name="EnterCodeScreen" component={EditNameAndPlateScreen} />
     </Stack.Navigator>
   );
 };

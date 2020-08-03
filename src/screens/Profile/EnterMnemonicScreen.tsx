@@ -10,11 +10,11 @@ import {useNavigation} from '@react-navigation/native';
 import {UserSendCodeDTO} from '../../core/auth';
 import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../store/actions';
-import {FormPhoneView} from '../../containers/Auth/FormPhoneView';
+import {MnemonicFormView} from '../../containers/Profile/MnemonicFormView';
 import {operationSelector} from 'redux-data-connect';
 import {commonStyles} from '../../../styles';
 
-export const EnterPhoneScreen: React.FC = () => {
+export const EnterMnemonicScreen: React.FC = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -72,7 +72,7 @@ export const EnterPhoneScreen: React.FC = () => {
         }}>
         Enter your phone
       </Text>
-      <FormPhoneView
+      <MnemonicFormView
         data={data}
         onSubmit={onSubmit}
         isSubmitted={isSubmitted}

@@ -9,8 +9,12 @@ export const namespace = 'profile';
 
 export const profileSelector = (state: RootState) => state.profile;
 
-export type ProfileActions = {
-  type: 'PROFILE_REQUEST' | 'PROFILE_SUCCESS' | 'PROFILE_FAILURE';
-  payload?: Profile;
-  error?: boolean;
-};
+export type ProfileAction =
+  | {
+      type: 'PROFILE_NOT_FOUND';
+    }
+  | {
+      type: 'PROFILE_REQUEST' | 'PROFILE_SUCCESS' | 'PROFILE_FAILURE';
+      payload?: Profile;
+      error?: boolean;
+    };

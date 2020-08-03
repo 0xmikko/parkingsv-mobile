@@ -10,10 +10,9 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 import {UserCodeDTO} from '../../core/auth';
 import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../store/actions';
-import {FormCodeView} from '../../containers/Auth/FormCodeView';
+import {NameAndPlateFormView} from '../../containers/Profile/NameAndPlateFormView';
 import {WelcomeStackParamList} from '../Welcome/WelcomeStack';
 import {operationSelector} from 'redux-data-connect';
-import {PleaseWaitModal} from '../../components/PleaseWaitModal';
 import {commonStyles} from '../../../styles';
 
 type EnterCodeScreenRouteProps = RouteProp<
@@ -21,7 +20,7 @@ type EnterCodeScreenRouteProps = RouteProp<
   'EnterCodeScreen'
 >;
 
-export const EnterCodeScreen: React.FC = () => {
+export const EditNameAndPlateScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   const route = useRoute<EnterCodeScreenRouteProps>();
@@ -67,7 +66,6 @@ export const EnterCodeScreen: React.FC = () => {
 
   return (
     <>
-      <PleaseWaitModal visible={isSubmitted} />
       <SafeAreaView style={commonStyles.safeAreaContainer}>
         <Text
           style={{
@@ -79,7 +77,7 @@ export const EnterCodeScreen: React.FC = () => {
           }}>
           Enter your code
         </Text>
-        <FormCodeView
+        <NameAndPlateFormView
           data={data}
           onSubmit={onSubmit}
           isSubmitted={isSubmitted}

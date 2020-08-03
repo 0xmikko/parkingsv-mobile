@@ -4,28 +4,28 @@
  */
 
 import {Profile} from '../../core/profile';
-import {ProfileActions} from './';
+import {ProfileAction} from './';
 
 export interface ProfileState extends Profile {}
 
 const initialState: ProfileState = {
-  id: 'Loading',
-  name: 'Loading',
-  plate: 'Loading',
-  avatar: 'Loading',
-  pubkey: '',
+  name: '',
+  plate: '',
+  publicKey: '',
   privateKey: '',
   isParking: false,
   amount: 0,
   startedAt: 0,
+  state: 'NAME_NEEDED',
 };
-
 
 export default function createReducer(
   state: ProfileState = initialState,
-  action: ProfileActions,
+  action: ProfileAction,
 ): ProfileState {
   switch (action.type) {
+    case 'PROFILE_NOT_FOUND':
+      return initialState;
     case 'PROFILE_REQUEST':
       return state;
     case 'PROFILE_SUCCESS':

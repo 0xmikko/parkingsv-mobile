@@ -15,10 +15,10 @@ export type ParkingAction =
       payload: {node: string};
     }
   | {
-      type: 'PARKING_SUCCESS';
+      type: 'PARKING_INFO_SUCCESS';
       payload: Parking;
     }
   | {
-      type: 'PARKING_REQUEST' | 'PARKING_FAILURE';
+      type: 'PARKING_INFO_REQUEST' | 'PARKING_INFO_FAIlURE';
       error?: boolean;
     };
