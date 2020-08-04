@@ -11,6 +11,7 @@ import {operationSelector} from 'redux-data-connect';
 import {profileSelector} from '../../store/profile';
 import {ParkingTermsView} from '../../containers/Parking/ParkingTermsView';
 import {ParkingStackParamList} from './ParkingStack';
+import { parkingSelector } from "../../store/parking";
 
 type ParkingTermsScreenRouteProp = RouteProp<
   ParkingStackParamList,
@@ -38,7 +39,7 @@ export const ParkingTermsScreen: React.FC = () => {
     getTerms();
   }, []);
 
-  const data = useSelector(profileSelector);
+  const data = useSelector(parkingSelector);
   const operationGet = useSelector(operationSelector(hashGet));
   const operationAdd = useSelector(operationSelector(hashAdd));
 
@@ -63,5 +64,5 @@ export const ParkingTermsScreen: React.FC = () => {
     navigation.navigate('QRScanScreen');
   };
 
-  return <ParkingTermsView amount={} onQRCodeScan={} />;
+  return <ParkingTermsView terms={data} onQRCodeScan={onScanQRCode} />;
 };

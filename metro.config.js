@@ -11,6 +11,10 @@
  */
 
 module.exports = {
+  resolver: {
+    extraNodeModules: require('node-libs-react-native'),
+    Buffer: require('buffer'),
+  },
   transformer: {
     getTransformOptions: async () => ({
       transform: {
@@ -19,4 +23,5 @@ module.exports = {
       },
     }),
   },
+
 };

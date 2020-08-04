@@ -5,7 +5,7 @@
 
 import {ThunkAction} from 'redux-thunk';
 import AsyncStorage from '@react-native-community/async-storage';
-import {KeyUtil} from 'parkingsv-contract';
+import {KeyUtil} from 'parkingsv-contract/lib/keyUtil';
 import {RootState} from '../index';
 import {ProfileAction} from './index';
 import {Profile, updateState} from '../../core/profile';
@@ -36,7 +36,7 @@ export const storeMnemonic = (
   const state = getState();
   let profile = {...state.profile};
   profile.privateKey = KeyUtil.getPrivateKeyFromMnemonic(mnemonic);
-  profile.publicKey = KeyUtil.getAddress(profile.privateKey)
+  profile.publicKey = KeyUtil.getAddress(profile.privateKey);
 
   profile = updateState(profile);
 
