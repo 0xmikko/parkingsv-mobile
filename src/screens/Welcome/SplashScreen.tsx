@@ -8,9 +8,25 @@ import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import {Button, Text} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {commonStyles} from '../../../styles';
+import {useSelector} from 'react-redux';
+import {profileSelector} from '../../store/profile';
 
 export const SplashScreen: React.FC = () => {
   const navigation = useNavigation();
+  const {state} = useSelector(profileSelector);
+  const finishSignUp = () => {
+    switch (state) {
+      default:
+      case 'SPLASH':
+      case 'NAME_NEEDED':
+        navigation.navigate('EditNameAndPlateScreen');
+        return;
+      case 'WALLET_NEEDED':
+        navigation.navigate('NewMnemonicScreen');
+        return;
+    }
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -37,11 +53,7 @@ export const SplashScreen: React.FC = () => {
         Interplanetary Parking System
       </Text>
       <View style={styles.button}>
-        <Button
-          title="Login / Signup"
-          onPress={() => navigation.navigate('PhoneScreen')}
-          type="outline"
-        />
+        <Button title="Login / Signup" onPress={finishSignUp} type="outline" />
       </View>
     </SafeAreaView>
   );

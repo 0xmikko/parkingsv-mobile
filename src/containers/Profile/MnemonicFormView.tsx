@@ -38,5 +38,6 @@ export const MnemonicFormView: React.FC<FormViewProfileProps> = ({
       onSubmit={onSubmit}
       isSubmitted={isSubmitted}
     />
+
   );
 };

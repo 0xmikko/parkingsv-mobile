@@ -7001,19 +7001,6 @@ parent-module@^1.0.0:
   dependencies:
     callsites "^3.0.0"
 
-parkingsv-contract@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/parkingsv-contract/-/parkingsv-contract-0.0.17.tgz#7a25ffa73a0151ef8c7555e8315e7f489ab90250"
-  integrity sha512-1MJ5FcMvfQMixkE+gZEzA1GpEAk90wOkA7h/oYnvtg/rDrh8x/EsbMd+676k3ur/4GmDS+I/4KHquG8V2w8DjQ==
-  dependencies:
-    "@types/bn.js" "^4.11.6"
-    axios "^0.19.2"
-    glob "^7.1.6"
-    parkingsv-contract "^0.0.2"
-    scryptc "0.1.20"
-    scryptlib "^0.1.5"
-    watch "^1.0.2"
-
 parkingsv-contract@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/parkingsv-contract/-/parkingsv-contract-0.0.2.tgz#e4f62ffc70a5b914d8f2c63375ca2eadf8412d9f"
@@ -7022,6 +7009,19 @@ parkingsv-contract@^0.0.2:
     "@types/bn.js" "^4.11.6"
     axios "^0.19.2"
     glob "^7.1.6"
+    scryptc "0.1.20"
+    scryptlib "^0.1.5"
+    watch "^1.0.2"
+
+parkingsv-contract@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/parkingsv-contract/-/parkingsv-contract-0.0.20.tgz#0f087b35d63c290016425f0a50fb55f54d930245"
+  integrity sha512-Yc1UmrH89ye9OL/uisuypH2mMN3oYFX9SbWwBOskTRCJDaQ3vTlgFMCXQRljBHVmX/YiFjX48Vn5vz/f63V7HQ==
+  dependencies:
+    "@types/bn.js" "^4.11.6"
+    axios "^0.19.2"
+    glob "^7.1.6"
+    parkingsv-contract "^0.0.2"
     scryptc "0.1.20"
     scryptlib "^0.1.5"
     watch "^1.0.2"

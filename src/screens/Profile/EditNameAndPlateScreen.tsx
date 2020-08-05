@@ -4,64 +4,45 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import {Alert, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {Text} from 'react-native-elements';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {UserCodeDTO} from '../../core/auth';
 import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../store/actions';
 import {NameAndPlateFormView} from '../../containers/Profile/NameAndPlateFormView';
-import {WelcomeStackParamList} from '../Welcome/WelcomeStack';
-import {operationSelector} from 'redux-data-connect';
 import {commonStyles} from '../../../styles';
-
-type EnterCodeScreenRouteProps = RouteProp<
-  WelcomeStackParamList,
-  'EnterCodeScreen'
->;
+import {profileSelector} from '../../store/profile';
+import {useNavigation} from '@react-navigation/native';
+import {PlateAndNameDTO} from '../../core/profile';
 
 export const EditNameAndPlateScreen: React.FC = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
-  const route = useRoute<EnterCodeScreenRouteProps>();
-  const {phone} = route.params;
-
-  const [hash, setHash] = useState('0');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const operation = useSelector(operationSelector(hash));
+  const data = useSelector(profileSelector);
+  const {state} = data;
 
   // TODO: Move status to new Dataloader component
 
   useEffect(() => {
-    if (hash !== '0') {
-      switch (operation?.status) {
-        case 'STATUS.SUCCESS':
-          break;
-
-        case 'STATUS.FAILURE':
-          setHash('0');
-          Alert.alert('Login Failed', 'Wrong code', [
-            {
-              text: 'Ok',
-              onPress: () => setIsSubmitted(false),
-              style: 'cancel',
-            },
-          ]);
-      }
+    switch (state) {
+      default:
+      case 'SPLASH':
+      case 'NAME_NEEDED':
+        navigation.navigate('EditNameAndPlateScreen');
+        return;
+      case 'WALLET_NEEDED':
+        navigation.navigate('NewMnemonicScreen');
+        return;
     }
-  }, [hash, operation]);
+  }, [state]);
 
-  const data: UserCodeDTO = {
-    code: '',
-  };
-  const onSubmit = (values: UserCodeDTO) => {
+  const onSubmit = (values: PlateAndNameDTO) => {
     setIsSubmitted(true);
-    const newHash = Date.now().toString();
-    setHash(newHash);
 
     // Emit data
-    dispatch(actions.auth.loginByPhone(phone, values.code, newHash));
+    dispatch(actions.profile.storeNameAndPlate(values.name, values.plate));
   };
 
   return (
@@ -75,7 +56,7 @@ export const EditNameAndPlateScreen: React.FC = () => {
             marginTop: 55,
             marginBottom: 15,
           }}>
-          Enter your code
+          Enter your data
         </Text>
         <NameAndPlateFormView
           data={data}

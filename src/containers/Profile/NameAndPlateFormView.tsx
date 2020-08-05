@@ -5,18 +5,19 @@
 
 import React from 'react';
 import * as yup from 'yup';
-import {UserCodeDTO} from '../../core/auth';
 import {
   FormikForm,
   FormikFormViewProps,
   LoadingView,
 } from 'rn-mobile-components';
+import {Profile} from '../../core/profile';
 
 const formSchema = yup.object({
-  code: yup.string().required().min(5),
+  name: yup.string().required().min(5),
+  plate: yup.string().required().min(5),
 });
 
-interface FormViewProfileProps extends FormikFormViewProps<UserCodeDTO> {}
+interface FormViewProfileProps extends FormikFormViewProps<Profile> {}
 
 export const NameAndPlateFormView: React.FC<FormViewProfileProps> = ({
   data,
@@ -24,7 +25,8 @@ export const NameAndPlateFormView: React.FC<FormViewProfileProps> = ({
   isSubmitted,
 }) => {
   const fields = {
-    code: {keyboard: 'numeric'},
+    name: {label: 'Name'},
+    plate: {label: 'Plate'},
   };
 
   if (!data) return <LoadingView />;

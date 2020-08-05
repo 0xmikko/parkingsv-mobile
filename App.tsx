@@ -6,8 +6,10 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import 'node-libs-react-native/globals';
+
 // @ts-ignore
 global.process.browser = true;
+
 import configureStore from './src/store';
 import {ThemeProvider} from 'react-native-elements';
 import {theme} from './styles';

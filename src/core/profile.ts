@@ -15,8 +15,9 @@ export interface Profile {
   state: 'SPLASH' | 'NAME_NEEDED' | 'WALLET_NEEDED' | 'READY';
 }
 
-export interface ProfileChangeNameDTO {
+export interface PlateAndNameDTO {
   name: string;
+  plate: string;
 }
 
 export const updateState = (profile: Profile): Profile => {

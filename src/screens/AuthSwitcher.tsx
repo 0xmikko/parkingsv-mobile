@@ -17,7 +17,7 @@ export const AuthSwitcher: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.profile.getPayload());
+    dispatch(actions.profile.getProfile());
   }, []);
 
   switch (state) {

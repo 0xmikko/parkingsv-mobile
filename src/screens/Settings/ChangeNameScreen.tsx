@@ -8,7 +8,7 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {Text} from 'react-native-elements';
 import {FormChangeNameView} from '../../containers/Settings/FormNameView';
-import {ProfileChangeNameDTO} from '../../core/profile';
+import {PlateAndNameDTO} from '../../core/profile';
 import actions from '../../store/actions';
 import {SettingsStackParamList} from './SettingsStack';
 import {operationSelector} from 'redux-data-connect';
@@ -48,7 +48,7 @@ export const ChangeNameScreen: React.FC = () => {
     }
   }, [hash, operation]);
 
-  const onSubmit = (values: ProfileChangeNameDTO) => {
+  const onSubmit = (values: PlateAndNameDTO) => {
     setIsSubmitted(true);
     const newHash = Date.now().toString();
     setHash(newHash);

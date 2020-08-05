@@ -70,7 +70,7 @@ export const EnterMnemonicScreen: React.FC = () => {
           marginTop: 55,
           marginBottom: 15,
         }}>
-        Enter your phone
+        Enter mnemonic
       </Text>
       <MnemonicFormView
         data={data}

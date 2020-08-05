@@ -8,6 +8,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {SplashScreen} from './SplashScreen';
 import {EditNameAndPlateScreen} from '../Profile/EditNameAndPlateScreen';
 import {EnterMnemonicScreen} from '../Profile/EnterMnemonicScreen';
+import { NewMnemonicScreen } from "../Profile/NewMnemonicScreen";
 
 const Stack = createStackNavigator();
 
@@ -26,13 +27,26 @@ export const WelcomeStack: React.FC = () => {
         }}
       />
       <Stack.Screen
-        name="PhoneScreen"
+        name="NewMnemonicScreen"
+        component={NewMnemonicScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EnterMnemonicScreen"
         component={EnterMnemonicScreen}
         options={{
           headerShown: false,
         }}
       />
-      <Stack.Screen name="EnterCodeScreen" component={EditNameAndPlateScreen} />
+      <Stack.Screen
+        name="EditNameAndPlateScreen"
+        component={EditNameAndPlateScreen}
+        options={{
+          title: 'Welcome to Parking SV',
+        }}
+      />
     </Stack.Navigator>
   );
 };

@@ -5,7 +5,7 @@
 
 import React from 'react';
 import * as yup from 'yup';
-import {ProfileChangeNameDTO} from '../../core/profile';
+import {PlateAndNameDTO} from '../../core/profile';
 import {
   FormikForm,
   FormikFormViewProps,
@@ -17,7 +17,7 @@ const formSchema = yup.object({
 });
 
 interface FormViewProfileProps
-  extends FormikFormViewProps<ProfileChangeNameDTO> {}
+  extends FormikFormViewProps<PlateAndNameDTO> {}
 
 export const FormChangeNameView: React.FC<FormViewProfileProps> = ({
   data,

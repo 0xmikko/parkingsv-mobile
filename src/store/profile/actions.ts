@@ -20,10 +20,7 @@ export const storeNameAndPlate = (
 ) => {
   const state = getState();
   let profile = {...state.profile, name, plate};
-
-  profile = updateState(profile);
-
-  dispatch({type: 'PROFILE_SUCCESS', payload: profile});
+  dispatch(updateProfile(profile));
 };
 
 // Store mnemonic
@@ -37,13 +34,18 @@ export const storeMnemonic = (
   let profile = {...state.profile};
   profile.privateKey = KeyUtil.getPrivateKeyFromMnemonic(mnemonic);
   profile.publicKey = KeyUtil.getAddress(profile.privateKey);
+  dispatch(updateProfile(profile));
+};
 
+const updateProfile = (
+  profile: Profile,
+): ThunkAction<void, RootState, unknown, ProfileAction> => async (dispatch) => {
   profile = updateState(profile);
-
+  await AsyncStorage.setItem('profile', JSON.stringify(profile));
   dispatch({type: 'PROFILE_SUCCESS', payload: profile});
 };
 
-export const getPayload = (): ThunkAction<
+export const getProfile = (): ThunkAction<
   void,
   RootState,
   unknown,

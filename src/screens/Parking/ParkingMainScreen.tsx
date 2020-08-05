@@ -20,7 +20,7 @@ export const ParkingMainScreen: React.FC = () => {
 
   const getProfile = () => {
     const newHash = Date.now().toString();
-    dispatch(actions.profile.getProfile(newHash));
+    dispatch(actions.profile.getProfile());
     setGetHash(newHash);
   };
 

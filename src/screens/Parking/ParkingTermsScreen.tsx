@@ -41,13 +41,13 @@ export const ParkingTermsScreen: React.FC = () => {
 
   const data = useSelector(parkingSelector);
   const operationGet = useSelector(operationSelector(hashGet));
-  const operationAdd = useSelector(operationSelector(hashAdd));
+  const operationSign = useSelector(operationSelector(hashAdd));
 
   // TODO: Move status to new Dataloader component
 
   useEffect(() => {
     if (hashAdd !== '0') {
-      switch (operationAdd?.status) {
+      switch (operationSign?.status) {
         case 'STATUS.SUCCESS':
           setAddHash('0');
           setTimeout(() => navigation.navigate('ContactsList'), 500);
@@ -58,11 +58,12 @@ export const ParkingTermsScreen: React.FC = () => {
         // alert("Cant submit your operation to server");
       }
     }
-  }, [operationAdd]);
+  }, [operationSign]);
 
-  const onScanQRCode = () => {
-    navigation.navigate('QRScanScreen');
+  const onAgreeTerms = () => {
+    
+    navigation.navigate('ParkingMainScreen');
   };
 
-  return <ParkingTermsView terms={data} onQRCodeScan={onScanQRCode} />;
+  return <ParkingTermsView terms={data} onQRCodeScan={onAgreeTerms} />;
 };
