@@ -27,8 +27,6 @@ const apiMiddleware = createApiMiddleware(
 export default function configureStore() {
   return createStore(
     reducer,
-    composeEnhancers(
-      applyMiddleware(thunk, apiMiddleware),
-    ),
+    composeEnhancers(applyMiddleware(thunk, apiMiddleware)),
   );
 }

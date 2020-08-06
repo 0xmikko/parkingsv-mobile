@@ -31,7 +31,7 @@ export const ParkingTermsScreen: React.FC = () => {
 
   const getTerms = () => {
     const newGetHash = Date.now().toString();
-    dispatch(actions.parking.getTerms(node));
+    dispatch(actions.parking.getTerms(node, newGetHash));
     setGetHash(newGetHash);
   };
 
@@ -61,7 +61,7 @@ export const ParkingTermsScreen: React.FC = () => {
   }, [operationSign]);
 
   const onAgreeTerms = () => {
-    
+    dispatch(actions.parking.startParking())
     navigation.navigate('ParkingMainScreen');
   };
 
