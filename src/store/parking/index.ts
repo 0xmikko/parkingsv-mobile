@@ -21,4 +21,11 @@ export type ParkingAction =
   | {
       type: 'PARKING_INFO_REQUEST' | 'PARKING_INFO_FAIlURE';
       error?: boolean;
+    }
+  | {
+      type: 'PARKING_START_SUCCESS';
+      payload: {timestamp: number};
+    }
+  | {
+      type: 'PARKING_FINISH';
     };

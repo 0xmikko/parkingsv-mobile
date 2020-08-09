@@ -11,12 +11,13 @@ import {operationSelector} from 'redux-data-connect';
 import {profileSelector} from '../../store/profile';
 import {OnParkingView} from '../../containers/Parking/OnParkingView';
 import {ReadyView} from '../../containers/Parking/ReadyView';
+import {parkingSelector} from '../../store/parking';
 
 export const ParkingMainScreen: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [hashGet, setGetHash] = useState('0');
-  const [hashAdd, setAddHash] = useState('0');
+  const [hashPay, setPayHash] = useState('0');
 
   const getProfile = () => {
     const newHash = Date.now().toString();
@@ -29,32 +30,39 @@ export const ParkingMainScreen: React.FC = () => {
   }, []);
 
   const data = useSelector(profileSelector);
+  const parkingData = useSelector(parkingSelector);
   const operationGet = useSelector(operationSelector(hashGet));
-  const operationAdd = useSelector(operationSelector(hashAdd));
+  const operationPay = useSelector(operationSelector(hashPay));
 
   // TODO: Move status to new Dataloader component
 
   useEffect(() => {
-    if (hashAdd !== '0') {
-      switch (operationAdd?.status) {
+    if (hashPay !== '0') {
+      switch (operationPay?.status) {
         case 'STATUS.SUCCESS':
-          setAddHash('0');
+          setPayHash('0');
           setTimeout(() => navigation.navigate('ContactsList'), 500);
           break;
 
         case 'STATUS.FAILURE':
-          setAddHash('0');
+          setPayHash('0');
         // alert("Cant submit your operation to server");
       }
     }
-  }, [operationAdd]);
+  }, [operationPay]);
 
   const onScanQRCode = () => {
     navigation.navigate('QRScanScreen');
   };
 
-  return data.isParking ? (
-    <OnParkingView started={data.startedAt} />
+  const onPay = () => {
+    const newHash = Date.now().toString();
+    dispatch(actions.parking.payParking(newHash));
+    setPayHash(newHash)
+  };
+
+  return parkingData.isParking ? (
+    <OnParkingView started={parkingData.startedAt} onPayPressed={onPay} />
   ) : (
     <ReadyView amount={data.amount} onQRCodeScan={onScanQRCode} />
   );

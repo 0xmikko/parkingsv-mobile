@@ -11,4 +11,6 @@ export interface Parking {
   price2h: number;
   price24h: number;
   pubkey: string;
+  isParking: boolean;
+  startedAt: number;
 }

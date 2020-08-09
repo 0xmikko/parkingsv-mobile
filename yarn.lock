@@ -6489,6 +6489,11 @@ mocha@^5.2.0:
     mkdirp "0.5.1"
     supports-color "5.4.0"
 
+moment@^2.27.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
+  integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -7001,29 +7006,18 @@ parent-module@^1.0.0:
   dependencies:
     callsites "^3.0.0"
 
-parkingsv-contract@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/parkingsv-contract/-/parkingsv-contract-0.0.2.tgz#e4f62ffc70a5b914d8f2c63375ca2eadf8412d9f"
-  integrity sha512-jv/A0be3Eft8Mw77pRmwJf5KoR7BidTy+9w9SG6dfMf43hSbDS8h5ujAsui0EJUpg+rQLhOlXatAjcfYwK0yBQ==
+parkingsv-contract@^0.0.24:
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/parkingsv-contract/-/parkingsv-contract-0.0.24.tgz#b50ee65304f747750a00152fa48f0656122f0e1f"
+  integrity sha512-qk9pb9orbldpr95v/aaJMl/jumezTDZBxEWuzrpamy8fde5qcninpCMTngIU2WMdugCo/5QctjrXrV2LMKbqeA==
   dependencies:
     "@types/bn.js" "^4.11.6"
     axios "^0.19.2"
+    bsv "git+https://git@github.com/scrypt-sv/bsv.git#07f0d3c688a979d0b5d5cfe5e96c53f52fce6d58"
     glob "^7.1.6"
+    md5 "^2.2.1"
     scryptc "0.1.20"
-    scryptlib "^0.1.5"
-    watch "^1.0.2"
-
-parkingsv-contract@^0.0.20:
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/parkingsv-contract/-/parkingsv-contract-0.0.20.tgz#0f087b35d63c290016425f0a50fb55f54d930245"
-  integrity sha512-Yc1UmrH89ye9OL/uisuypH2mMN3oYFX9SbWwBOskTRCJDaQ3vTlgFMCXQRljBHVmX/YiFjX48Vn5vz/f63V7HQ==
-  dependencies:
-    "@types/bn.js" "^4.11.6"
-    axios "^0.19.2"
-    glob "^7.1.6"
-    parkingsv-contract "^0.0.2"
-    scryptc "0.1.20"
-    scryptlib "^0.1.5"
+    ts-optchain "^0.1.8"
     watch "^1.0.2"
 
 parse-asn1@^5.0.0, parse-asn1@^5.1.5:
@@ -8271,16 +8265,6 @@ scryptc@0.1.20:
   version "0.1.20"
   resolved "https://registry.yarnpkg.com/scryptc/-/scryptc-0.1.20.tgz#cf10b7d9e4acadb2a1d0d84ebdcc06b24ce899d9"
   integrity sha512-EFKUw4+hw27g3Ohw0SEkGYXIxSwga5vBLYfM64/DiFzbV5sW+NYJIjfZkCch1UorLjMWDSZ3EkdxOr1EvLIjZw==
-
-scryptlib@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/scryptlib/-/scryptlib-0.1.5.tgz#4139a0f081458f25b0282fe4a845d48ec48132b5"
-  integrity sha512-sbSYhuhDf8PvHEHiyx8aB2LO1BaeBtkIssbO3b9/T+YUfSLrNku6AAkqRr0J5HI2xo1gggtrEziQKk2mBhQ7lw==
-  dependencies:
-    bsv "git+https://git@github.com/scrypt-sv/bsv.git#07f0d3c688a979d0b5d5cfe5e96c53f52fce6d58"
-    md5 "^2.2.1"
-    scryptc "0.1.20"
-    ts-optchain "^0.1.8"
 
 "semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.7.1"

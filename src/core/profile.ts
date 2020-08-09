@@ -9,9 +9,8 @@ export interface Profile {
   plate: string;
   publicKey: string;
   privateKey: string;
-  isParking: boolean;
   amount: number;
-  startedAt?: number;
+
   state: 'SPLASH' | 'NAME_NEEDED' | 'WALLET_NEEDED' | 'READY';
 }
 

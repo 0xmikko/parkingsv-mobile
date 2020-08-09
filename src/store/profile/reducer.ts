@@ -13,9 +13,7 @@ const initialState: ProfileState = {
   plate: '',
   publicKey: '',
   privateKey: '',
-  isParking: false,
   amount: 0,
-  startedAt: 0,
   state: 'NAME_NEEDED',
 };
 

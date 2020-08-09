@@ -9,7 +9,7 @@ import {KeyUtil} from 'parkingsv-contract/lib/keyUtil';
 import {RootState} from '../index';
 import {ProfileAction} from './index';
 import {Profile, updateState} from '../../core/profile';
-
+import {initContract} from '../contract/actions';
 // Store user name & licence plate
 export const storeNameAndPlate = (
   name: string,
@@ -61,4 +61,8 @@ export const getProfile = (): ThunkAction<
   profile = updateState(profile);
 
   dispatch({type: 'PROFILE_SUCCESS', payload: profile});
+
+  const privateKey = profile.privateKey;
+
+  await dispatch(initContract(privateKey));
 };

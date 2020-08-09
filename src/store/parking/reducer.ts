@@ -5,6 +5,7 @@
 
 import {Parking} from '../../core/parking';
 import {ParkingAction} from './';
+import { number } from "yup";
 
 export interface ParkingState extends Parking {}
 
@@ -16,6 +17,8 @@ const initialState: ParkingState = {
   price2h: 0,
   price24h: 0,
   pubkey: '',
+  startedAt: 0,
+  isParking: false,
 };
 
 export default function createReducer(
@@ -44,6 +47,14 @@ export default function createReducer(
       return {
         ...initialState,
       };
+
+    case 'PARKING_START_SUCCESS':
+      return {
+        ...state,
+        startedAt: action.payload.timestamp,
+        isParking: true,
+
+      }
   }
 
   return state;

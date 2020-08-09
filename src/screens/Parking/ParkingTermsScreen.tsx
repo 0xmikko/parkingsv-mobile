@@ -22,7 +22,7 @@ export const ParkingTermsScreen: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [hashGet, setGetHash] = useState('0');
-  const [hashAdd, setAddHash] = useState('0');
+  const [hashStart, setStartHash] = useState('0');
 
   const route = useRoute<ParkingTermsScreenRouteProp>();
   const {node} = route.params;
@@ -41,28 +41,30 @@ export const ParkingTermsScreen: React.FC = () => {
 
   const data = useSelector(parkingSelector);
   const operationGet = useSelector(operationSelector(hashGet));
-  const operationSign = useSelector(operationSelector(hashAdd));
+  const operationSign = useSelector(operationSelector(hashStart));
 
   // TODO: Move status to new Dataloader component
 
   useEffect(() => {
-    if (hashAdd !== '0') {
+    if (hashStart !== '0') {
       switch (operationSign?.status) {
         case 'STATUS.SUCCESS':
-          setAddHash('0');
-          setTimeout(() => navigation.navigate('ContactsList'), 500);
+          setStartHash('0');
+          navigation.navigate('ParkingMainScreen');
           break;
 
         case 'STATUS.FAILURE':
-          setAddHash('0');
+          setStartHash('0');
         // alert("Cant submit your operation to server");
       }
     }
   }, [operationSign]);
 
   const onAgreeTerms = () => {
-    dispatch(actions.parking.startParking())
-    navigation.navigate('ParkingMainScreen');
+    const newHash = Date.now().toString();
+    dispatch(actions.parking.startParking(newHash));
+    setStartHash(newHash);
+    // navigation.navigate('ParkingMainScreen');
   };
 
   return <ParkingTermsView terms={data} onQRCodeScan={onAgreeTerms} />;
