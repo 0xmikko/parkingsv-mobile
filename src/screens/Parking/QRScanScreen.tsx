@@ -14,7 +14,9 @@ export const QRScanScreen: React.FC = () => {
 
   const onSuccess = (e: Event | null) => {
     // const qrcode = e.data as string;
-    navigation.navigate('ParkingTermsScreen', {node: 'http://localhost:4000'});
+    navigation.navigate('ParkingTermsScreen', {
+      node: 'http://192.168.88.253:4000',
+    });
   };
   return (
     // <Text>Hello!</Text>

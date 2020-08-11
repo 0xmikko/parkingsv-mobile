@@ -17,11 +17,10 @@ export function OnParkingView({
   started,
   onPayPressed,
 }: OnParkingScreenProps): React.ReactElement {
-  console.log(started);
 
-  const [parkingTime, setParkingTime] = useState(Date.now() - started);
+  const [parkingTime, setParkingTime] = useState(Date.now() - started - 3*60*60*1000);
   const [timer, setTimer] = useState<NodeJS.Timeout>(
-    setInterval(() => setParkingTime(Date.now() - started), 60000),
+    setInterval(() => setParkingTime(Date.now() - started - 3*60*60*1000), 1000),
   );
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export function OnParkingView({
     };
   }, []);
 
-  const timeFmt = moment(parkingTime).format('HH:mm');
+  const timeFmt = moment(parkingTime).format('HH:mm:ss');
   return (
     <SafeAreaView style={commonStyles.safeAreaContainer}>
       <View style={styles.amountView}>

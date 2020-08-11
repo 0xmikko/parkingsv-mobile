@@ -5,7 +5,7 @@
 
 import {Parking} from '../../core/parking';
 import {ParkingAction} from './';
-import { number } from "yup";
+import {number} from 'yup';
 
 export interface ParkingState extends Parking {}
 
@@ -53,8 +53,13 @@ export default function createReducer(
         ...state,
         startedAt: action.payload.timestamp,
         isParking: true,
-
-      }
+      };
+    case 'PARKING_PAY_SUCCESS':
+      return {
+        ...state,
+        startedAt: 0,
+        isParking: false,
+      };
   }
 
   return state;

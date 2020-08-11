@@ -51,12 +51,10 @@ export const styles = StyleSheet.create({
   scanButtonContainer: {
     borderRadius: 12,
 
-    textAlignVertical: 'center',
   },
   scanButtonTitle: {
     height: 100,
     flex: 1,
-    textAlignVertical: 'center',
 
   },
 });

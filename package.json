@@ -19,12 +19,14 @@
     "@types/node": "^14.6.0",
     "bsv": "^1.5.3",
     "moment": "^2.27.0",
+    "node-libs-browser": "^2.2.1",
     "node-libs-react-native": "^1.2.0",
-    "parkingsv-contract": "^0.0.24",
+    "parkingsv-contract": "^0.0.26",
     "path-browserify": "^1.0.1",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-camera": "^3.24.1",
+    "react-native-crypto": "^2.2.0",
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
@@ -46,6 +48,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "rn-mobile-components": "^1.0.8",
+    "safe-buffer": "^5.2.1",
     "yup": "^0.28.4"
   },
   "devDependencies": {

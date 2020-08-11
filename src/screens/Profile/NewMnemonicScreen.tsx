@@ -4,8 +4,8 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import {Button, SafeAreaView} from 'react-native';
-import {Text} from 'react-native-elements';
+import {SafeAreaView, View} from 'react-native';
+import {Text, Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../store/actions';
@@ -56,11 +56,19 @@ export const NewMnemonicScreen: React.FC = () => {
         }}>
         New mnemonic
       </Text>
-      <Text>{mnemonic}</Text>
+      <View
+        style={{
+          width: '80%',
+          marginTop: 30,
+          marginBottom: 30,
+        }}>
+        <Text h2 style={{textAlign: "center"}}>{mnemonic}</Text>
+      </View>
       <Button
         title={'I copy mnemonic to safe place'}
         onPress={onSubmit}
         disabled={isSubmitted}
+        // type="outline"
       />
     </SafeAreaView>
   );

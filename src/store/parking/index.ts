@@ -27,5 +27,5 @@ export type ParkingAction =
       payload: {timestamp: number};
     }
   | {
-      type: 'PARKING_FINISH';
+      type: 'PARKING_PAY_SUCCESS';
     };

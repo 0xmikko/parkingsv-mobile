@@ -22,17 +22,17 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({data}) => {
       icon: 'edit',
       action: () => navigation.navigate('ChangeNameScreen', {data}),
     },
-    // {
-    //   title: 'Change avatar',
-    //   icon: 'camera',
-    //   action: () => {
-    //     console.log('QQ');
-    //   },
-    // },
     {
-      title: 'Connect web',
-      icon: 'desktop-windows',
-      action: () => navigation.navigate('WebAuthQRScreen'),
+      title: 'Buy tokes',
+      icon: 'logo-bitcoin',
+      action: () => {
+        console.log('QQ');
+      },
+    },
+    {
+      title: 'Restore mnemonic',
+      icon: 'refresh-outline',
+      action: () => navigation.navigate('EnterMnemonic'),
     },
   ];
 
@@ -49,8 +49,7 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({data}) => {
             alignContent: 'center',
             alignItems: 'center',
           }}>
-          <Text h4>Contacts: {data.contacts.length}</Text>
-          <Text h4>Chats: {data.chats.length}</Text>
+          {/*<Text h4>Address: {data.publicKey}</Text>*/}
         </View>
       </View>
       <View>
@@ -58,7 +57,7 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({data}) => {
           <ListItem
             key={i}
             title={item.title}
-            leftIcon={{name: item.icon}}
+            leftIcon={{name: item.icon, type: "ionicon"}}
             bottomDivider
             chevron
             onPress={item.action}

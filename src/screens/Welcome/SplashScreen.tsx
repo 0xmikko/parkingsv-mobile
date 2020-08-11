@@ -31,7 +31,8 @@ export const SplashScreen: React.FC = () => {
     <SafeAreaView
       style={{
         ...commonStyles.safeAreaContainerCentered,
-        backgroundColor: 'white',
+          backgroundColor: '#0b1535',
+          width: '100%',
       }}>
       <Image
         source={require('../../../logo.jpg')}
@@ -47,13 +48,13 @@ export const SplashScreen: React.FC = () => {
         style={{
           fontSize: 18,
           fontWeight: 'bold',
-          color: '#687882',
+          color: '#ffffff',
           marginTop: 5,
         }}>
         Interplanetary Parking System
       </Text>
       <View style={styles.button}>
-        <Button title="Login / Signup" onPress={finishSignUp} type="outline" />
+        <Button title="Login" onPress={finishSignUp} type="outline" />
       </View>
     </SafeAreaView>
   );

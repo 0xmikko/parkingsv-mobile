@@ -41,7 +41,7 @@ export const ParkingMainScreen: React.FC = () => {
       switch (operationPay?.status) {
         case 'STATUS.SUCCESS':
           setPayHash('0');
-          setTimeout(() => navigation.navigate('ContactsList'), 500);
+          // setTimeout(() => navigation.navigate('ContactsList'), 500);
           break;
 
         case 'STATUS.FAILURE':

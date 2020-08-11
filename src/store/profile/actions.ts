@@ -37,7 +37,7 @@ export const storeMnemonic = (
   dispatch(updateProfile(profile));
 };
 
-const updateProfile = (
+export const updateProfile = (
   profile: Profile,
 ): ThunkAction<void, RootState, unknown, ProfileAction> => async (dispatch) => {
   profile = updateState(profile);
