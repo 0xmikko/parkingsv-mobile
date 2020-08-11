@@ -8,7 +8,6 @@ import {Profile} from '../../core/profile';
 import {SettingsScreen} from './SettingsScreen';
 import {ChangeNameScreen} from './ChangeNameScreen';
 import {Button} from 'react-native-elements';
-import {QRScanScreen} from '../Parking/WebAuthQRScanScreen';
 import {useDispatch} from 'react-redux';
 import actions from '../../store/actions';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
@@ -46,7 +45,6 @@ export const SettingsStack: React.FC = () => {
           title: 'Changing name',
         }}
       />
-
     </Stack.Navigator>
   );
 };

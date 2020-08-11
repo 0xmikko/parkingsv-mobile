@@ -12,7 +12,7 @@ import { ParkingTermsScreen } from "./ParkingTermsScreen";
 const Stack = createNativeStackNavigator();
 
 export type ParkingStackParamList = {
-  ParkingTermsScreen: {node: string};
+  ParkingTermsScreen: {node: string, code: string};
 };
 
 export const ParkingStack: React.FC = () => {

@@ -25,13 +25,13 @@ export const ParkingTermsScreen: React.FC = () => {
   const [hashStart, setStartHash] = useState('0');
 
   const route = useRoute<ParkingTermsScreenRouteProp>();
-  const {node} = route.params;
+  const {node, code} = route.params;
 
   console.log(node);
 
   const getTerms = () => {
     const newGetHash = Date.now().toString();
-    dispatch(actions.parking.getTerms(node, newGetHash));
+    dispatch(actions.parking.getTerms(node, code, newGetHash));
     setGetHash(newGetHash);
   };
 

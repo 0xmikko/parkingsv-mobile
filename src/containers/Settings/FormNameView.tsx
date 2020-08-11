@@ -16,8 +16,7 @@ const formSchema = yup.object({
   name: yup.string().required('Please, provide your name').min(2),
 });
 
-interface FormViewProfileProps
-  extends FormikFormViewProps<PlateAndNameDTO> {}
+interface FormViewProfileProps extends FormikFormViewProps<PlateAndNameDTO> {}
 
 export const FormChangeNameView: React.FC<FormViewProfileProps> = ({
   data,

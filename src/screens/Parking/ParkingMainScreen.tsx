@@ -16,13 +16,10 @@ import {parkingSelector} from '../../store/parking';
 export const ParkingMainScreen: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [hashGet, setGetHash] = useState('0');
   const [hashPay, setPayHash] = useState('0');
 
   const getProfile = () => {
-    const newHash = Date.now().toString();
     dispatch(actions.profile.getProfile());
-    setGetHash(newHash);
   };
 
   useEffect(() => {
@@ -31,7 +28,6 @@ export const ParkingMainScreen: React.FC = () => {
 
   const data = useSelector(profileSelector);
   const parkingData = useSelector(parkingSelector);
-  const operationGet = useSelector(operationSelector(hashGet));
   const operationPay = useSelector(operationSelector(hashPay));
 
   // TODO: Move status to new Dataloader component
@@ -58,7 +54,7 @@ export const ParkingMainScreen: React.FC = () => {
   const onPay = () => {
     const newHash = Date.now().toString();
     dispatch(actions.parking.payParking(newHash));
-    setPayHash(newHash)
+    setPayHash(newHash);
   };
 
   return parkingData.isParking ? (

@@ -13,6 +13,7 @@ const initialState: ParkingState = {
   id: '',
   name: 'Loading',
   node: '',
+  code: '',
   price1h: 0,
   price2h: 0,
   price24h: 0,
@@ -29,7 +30,7 @@ export default function createReducer(
     case 'PARKING_SET_NODE':
       return {
         ...state,
-        node: action.payload.node,
+        ...action.payload,
       };
 
     case 'PARKING_INFO_REQUEST':

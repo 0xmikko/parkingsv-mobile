@@ -16,6 +16,7 @@ export const QRScanScreen: React.FC = () => {
     // const qrcode = e.data as string;
     navigation.navigate('ParkingTermsScreen', {
       node: 'http://192.168.88.253:4000',
+      code: 'BARRIER1',
     });
   };
   return (

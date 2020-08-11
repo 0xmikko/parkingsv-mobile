@@ -12,7 +12,7 @@ export const parkingSelector = (state: RootState) => state.parking;
 export type ParkingAction =
   | {
       type: 'PARKING_SET_NODE';
-      payload: {node: string};
+      payload: {node: string; code: string};
     }
   | {
       type: 'PARKING_INFO_SUCCESS';

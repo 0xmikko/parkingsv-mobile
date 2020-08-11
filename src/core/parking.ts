@@ -6,6 +6,7 @@
 export interface Parking {
   id: string;
   node: string;
+  code: string;
   name: string;
   price1h: number;
   price2h: number;

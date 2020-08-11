@@ -3,21 +3,22 @@
  * Copyright (c) 2020. Mikhail Lazarev
  */
 
-import {ThunkAction} from 'redux-thunk';
+import  {ThunkAction} from 'redux-thunk';
 import {RootState} from '../index';
 import {ParkingAction} from './index';
 import {journaledOperation} from 'redux-data-connect';
 import {createAction} from 'redux-api-middleware';
 import desc from 'parkingsv-contract/build/token_desc.json';
 import {getContractInstance} from '../contract/actions';
-import {toHex} from 'parkingsv-contract/lib/scryptlib';
 import {updateProfile} from '../profile/actions';
 
+// Gettings parking term from {node} got from QR Code
 export const getTerms = (
   node: string,
+  code: string,
   opHash: string = '0',
 ): ThunkAction<void, RootState, unknown, ParkingAction> => async (dispatch) => {
-  dispatch({type: 'PARKING_SET_NODE', payload: {node}});
+  dispatch({type: 'PARKING_SET_NODE', payload: {node, code}});
   const endpoint = node + '/api/parking';
   return dispatch(
     journaledOperation(
@@ -87,9 +88,7 @@ export const payParking = (
     throw new Error('Contract is not initialized!');
   }
 
-  console.log('LEDGER!!!', contract.ledger.toString());
-  console.log('TO ADDRESS', toAddress);
-  const txHex = '133123123'; //await contract.transferTokens(toAddress, 5);
+  const txHex = await contract.transferTokens(toAddress, sumToPay);
   console.log('TTSS', txHex);
   await dispatch(
     journaledOperation(
@@ -108,10 +107,8 @@ export const payParking = (
     ),
   );
 
-  contract.ledger.setBalance(state.profile.publicKey, 49);
-
   const newAmount = contract.ledger.getBalance(state.profile.publicKey);
   const profile = {...state.profile};
-  profile.amount = 49;
+  profile.amount = newAmount;
   dispatch(updateProfile(profile));
 };
